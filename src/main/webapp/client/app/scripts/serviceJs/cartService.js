@@ -17,12 +17,15 @@ angular.module('letusgo').service('cartService', function ( productService, $htt
 
   };
 
-  this.changeCount = function (cart) {
+  this.changeCount = function (cart,callback) {
     productService.cartItem(function (cartItems) {
       _.forEach(cartItems, function (cartItem) {
         if (cartItem.item.name === cart.item.name) {
           cartItem.count = cart.count;
-          $http.put('/api/cartItems/'+cartItem.id,cartItem);
+          $http.put('/api/cartItems/'+cartItem.id,cartItem).success(function () {
+            callback();
+          });
+
         }
       });
     });
