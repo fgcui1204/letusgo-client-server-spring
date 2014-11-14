@@ -23,7 +23,10 @@ angular.module('letusgo')
     initTotalMoney();
 
 
-    $scope.changeCount = function (item) {
+    $scope.changeCount = function (item,index) {
+      if($scope.cartItems[index].count <= 0){
+        $scope.cartItems.splice(index,1);
+      }
       cartService.changeCount(item, function () {
         initTotalCount();
         initTotalMoney();
