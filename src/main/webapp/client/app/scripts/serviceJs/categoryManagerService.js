@@ -12,16 +12,18 @@ angular.module('letusgo').service('CategoryManagerService', function ($location,
   };
 
   this.getCategoryById = function (id, callback) {
-    this.getCategories(function (data) {
-      var categories = data;
-      var result = _.find(categories, { 'id': id });
+    this.getCategories(function (categories) {
+      var result = _.find(categories,function(category){
+          return category.id.toString() === id.toString();
+      });
+
       callback(result);
     });
 
   };
 
   this.doUpdate = function (category, callback) {
-    $http.put('/api/categories/' + category.id, {category: category})
+    $http.put('/api/categories/' + category.id, category)
       .success(function (data) {
         callback(data);
       });
