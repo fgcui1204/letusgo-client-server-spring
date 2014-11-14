@@ -17,22 +17,18 @@ angular.module('letusgo').service('cartService', function ( productService, $htt
 
   };
 
-  this.changeCount = function (item, callback) {
-    productService.cartItem(function (data) {
-      var cartItem = data;
-      _.forEach(cartItem, function (cartItem) {
-        if (cartItem.name === item.name) {
-          cartItem.count = item.count;
+  this.changeCount = function (cart) {
+    productService.cartItem(function (cartItems) {
+      _.forEach(cartItems, function (cartItem) {
+        if (cartItem.item.name === cart.item.name) {
+          cartItem.count = cart.count;
+          $http.put('/api/cartItems/'+cartItem.id,cartItem);
         }
-      });
-      var result = _.filter(cartItem, function (item) {
-        return item.count !== 0;
-      });
-      $http.post('/api/cartItems', {cartItems: result}).success(function () {
-        callback();
       });
     });
   };
+
+
 
   this.remove = function(callback){
     $http.delete('/api/payment').success(function(data){
