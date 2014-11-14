@@ -27,7 +27,7 @@ public class CartItemServiceImpl implements CartItemService {
             cartItem.setItem(item);
         }
 
-        return cartItemDao.getCartItems();
+        return cartItemList;
     }
 
     @Override
