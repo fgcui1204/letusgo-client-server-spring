@@ -24,9 +24,10 @@ angular.module('letusgo').service('productService', function ($http) {
       var totalCount = 0;
 
       if (!_.isEmpty(cartItems)) {
-        var counts = _.pluck(cartItems,'count');
-        totalCount = _.reduce(counts,function(totalCount,num){
-           return totalCount + num;
+
+        var counts = _.pluck(cartItems, 'count');
+        totalCount = _.reduce(counts, function (totalCount, num) {
+          return totalCount + num;
         });
       }
       callback(totalCount);
@@ -37,15 +38,16 @@ angular.module('letusgo').service('productService', function ($http) {
   this.addToCart = function (product) {
     this.cartItem(function (cartItems) {
 
-      var result = _.find(cartItems,function(cartItem){
+      var result = _.find(cartItems, function (cartItem) {
         return cartItem.item.id === product.id;
       });
 
       if (result) {
-        result.count = result.count+1;
-        $http.put('/api/cartItems/'+result.id,result);
+        result.count = result.count + 1;
+        $http.put('/api/cartItems/' + result.id, result);
       } else {
-        var cartItem = {item : product};
+
+        var cartItem = {item: product};
         cartItem.count = 1;
         $http.post('/api/cartItems', cartItem);
       }
@@ -73,7 +75,7 @@ angular.module('letusgo').service('productService', function ($http) {
   this.getProductById = function (id, callback) {
     this.product(function (items) {
 
-      var item = _.find(items,function(product){
+      var item = _.find(items, function (product) {
         return product.id.toString() === id.toString();
 
       });
@@ -83,12 +85,12 @@ angular.module('letusgo').service('productService', function ($http) {
   };
 
 
-  this.judgeIfHaveItems = function(id,callback){
-    this.product(function(data){
+  this.judgeIfHaveItems = function (id, callback) {
+    this.product(function (data) {
       var items = data;
       var result = true;
-      _.forEach(items,function(item){
-        if(item.category.id === id){
+      _.forEach(items, function (item) {
+        if (item.category.id === id) {
           result = false;
         }
       });
@@ -97,7 +99,7 @@ angular.module('letusgo').service('productService', function ($http) {
   };
 
   this.doUpdate = function (product, callback) {
-    $http.put('/api/items/' + product.id,product )
+    $http.put('/api/items/' + product.id, product)
       .success(function (data) {
         callback(data);
       });

@@ -13,6 +13,7 @@ angular.module('letusgo').service('CategoryManagerService', function ($location,
 
   this.getCategoryById = function (id, callback) {
     this.getCategories(function (categories) {
+
       var result = _.find(categories,function(category){
           return category.id.toString() === id.toString();
       });
