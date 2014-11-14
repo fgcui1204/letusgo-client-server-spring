@@ -48,9 +48,7 @@ public class CartItemDaoImpl implements CartItemDao {
     public void insertCartItem(CartItem cartItem){
 
         String sql = "insert into cartitem values(null,?,?)";
-        System.out.print("333333333");
-        System.out.print(cartItem);
-
+        
         jdbcTemplate.update(sql,cartItem.getItem().getId(),cartItem.getCount());
     }
 
