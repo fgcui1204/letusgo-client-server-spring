@@ -1,5 +1,5 @@
 'use strict';
-angular.module('letusgo').service('cartService', function ( productService, $http) {
+angular.module('letusgo').service('cartService', function ($http) {
 
   this.cartItem = function (callback) {
     $http.get('/api/cartItems').success(function (data) {
@@ -9,7 +9,7 @@ angular.module('letusgo').service('cartService', function ( productService, $htt
   };
 
   this.getTotalMoney = function (callback) {
-    productService.cartItem(function (cartItems) {
+    this.cartItem(function (cartItems) {
 
       var totalMoney = 0;
 
@@ -62,7 +62,7 @@ angular.module('letusgo').service('cartService', function ( productService, $htt
   };
 
   this.changeCount = function (cart,callback) {
-    productService.cartItem(function (cartItems) {
+    this.cartItem(function (cartItems) {
 
       _.forEach(cartItems, function (cartItem) {
 
