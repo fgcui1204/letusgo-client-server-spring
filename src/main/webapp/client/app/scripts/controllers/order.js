@@ -2,7 +2,7 @@
 angular.module('letusgo')
   .controller('OrderCtrl', function ($scope, $location, cartService, productService) {
 
-    function initTotalCount(){
+    function initTotalCount() {
       productService.getTotalCount(function (data) {
         $scope.$parent.totalCount = data;
       });
@@ -17,10 +17,10 @@ angular.module('letusgo')
     cartService.getTotalMoney(function (data) {
       $scope.totalMoney = data;
     });
-        $scope.remove = function(){
-            cartService.remove(function(){
-              initTotalCount();
-            });
-          $location.path('/homePage').replace();
-        };
+
+    $scope.remove = function () {
+      cartService.remove(function () {
+      });
+      $location.path('/homePage').replace();
+    };
   });
