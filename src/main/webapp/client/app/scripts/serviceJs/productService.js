@@ -6,12 +6,6 @@ angular.module('letusgo').service('productService', function ($http) {
     });
   };
 
-  this.categories = function (callback) {
-    $http.get('/api/categories').success(function (data) {
-      callback(data);
-    });
-  };
-
   this.delete = function (id,callback) {
     $http.delete('/api/items/' + id).success(function () {
       callback();
