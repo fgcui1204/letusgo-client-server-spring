@@ -65,7 +65,7 @@ angular.module('letusgo').service('productService', function ($http) {
 
   this.productInfo = function () {
     return {
-      barcode: '',
+      barcode: 'ITEM000006',
       category: {
         id: '',
         name: ''
