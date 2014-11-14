@@ -11,8 +11,9 @@ angular.module('letusgo')
     initProducts();
 
     $scope.delete = function (id) {
-      productService.delete(id);
-      initProducts();
+      productService.delete(id,function(){
+        initProducts();
+      });
     };
 
     $scope.toAdd = function () {

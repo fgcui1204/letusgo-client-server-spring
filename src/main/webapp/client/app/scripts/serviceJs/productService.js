@@ -58,8 +58,10 @@ angular.module('letusgo').service('productService', function ($http) {
     });
   };
 
-  this.delete = function (id) {
-    $http.delete('/api/items/' + id);
+  this.delete = function (id,callback) {
+    $http.delete('/api/items/' + id).success(function () {
+      callback();
+    });
   };
 
 
