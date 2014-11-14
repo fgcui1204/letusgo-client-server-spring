@@ -6,12 +6,11 @@ angular.module('letusgo').service('productService', function ($http) {
     });
   };
 
-  this.delete = function (id,callback) {
+  this.delete = function (id, callback) {
     $http.delete('/api/items/' + id).success(function () {
       callback();
     });
   };
-
 
   this.productInfo = function () {
     return {
@@ -40,8 +39,7 @@ angular.module('letusgo').service('productService', function ($http) {
 
 
   this.judgeIfHaveItems = function (id, callback) {
-    this.product(function (data) {
-      var items = data;
+    this.product(function (items) {
       var result = true;
       _.forEach(items, function (item) {
         if (item.category.id === id) {
