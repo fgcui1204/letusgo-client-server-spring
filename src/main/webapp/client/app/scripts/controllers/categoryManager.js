@@ -22,8 +22,9 @@ angular.module('letusgo')
     $scope.delete = function (id) {
       productService.judgeIfHaveItems(id,function(data){
         if(data){
-          CategoryManagerService.delete(id);
-          initCategories();
+          CategoryManagerService.delete(id,function(){
+            initCategories();
+          });
         }else{
           alert('该分类下有商品，不能删除');
         }

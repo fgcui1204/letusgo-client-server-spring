@@ -7,8 +7,10 @@ angular.module('letusgo').service('CategoryManagerService', function ($location,
     });
   };
 
-  this.delete = function (id) {
-    $http.delete('/api/categories/' + id);
+  this.delete = function (id,callback) {
+    $http.delete('/api/categories/' + id).success(function () {
+      callback();
+    });
   };
 
   this.getCategoryById = function (id, callback) {
