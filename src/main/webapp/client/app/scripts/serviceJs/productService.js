@@ -6,55 +6,9 @@ angular.module('letusgo').service('productService', function ($http) {
     });
   };
 
-  this.cartItem = function (callback) {
-    $http.get('/api/cartItems').success(function (data) {
-      var cartItems = data || [];
-      callback(cartItems);
-    });
-  };
-
   this.categories = function (callback) {
     $http.get('/api/categories').success(function (data) {
       callback(data);
-    });
-  };
-
-  this.getTotalCount = function (callback) {
-    this.cartItem(function (cartItems) {
-      var totalCount = 0;
-
-      if (!_.isEmpty(cartItems)) {
-
-        var counts = _.pluck(cartItems, 'count');
-        totalCount = _.reduce(counts, function (totalCount, num) {
-          return totalCount + num;
-        });
-      }
-      callback(totalCount);
-    });
-
-  };
-
-  this.addToCart = function (product,callback) {
-    this.cartItem(function (cartItems) {
-
-      var result = _.find(cartItems, function (cartItem) {
-        return cartItem.item.id === product.id;
-      });
-
-      if (result) {
-        result.count = result.count + 1;
-        $http.put('/api/cartItems/' + result.id, result).success(function (data) {
-          callback(data);
-        });
-      } else {
-
-        var cartItem = {item: product};
-        cartItem.count = 1;
-        $http.post('/api/cartItems', cartItem).success(function (data) {
-          callback(data);
-        });
-      }
     });
   };
 
