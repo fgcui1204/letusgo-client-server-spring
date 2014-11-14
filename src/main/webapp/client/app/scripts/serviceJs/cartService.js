@@ -25,6 +25,13 @@ angular.module('letusgo').service('cartService', function ( productService, $htt
         if (cartItem.item.name === cart.item.name) {
 
           cartItem.count = cart.count;
+
+          if(cartItem.count ===0 ){
+            $http.delete('/api/cartItems/'+cartItem.id).success(function () {
+              callback();
+            });
+          }
+
           $http.put('/api/cartItems/'+cartItem.id,cartItem).success(function () {
             callback();
           });
@@ -40,5 +47,4 @@ angular.module('letusgo').service('cartService', function ( productService, $htt
       callback(data);
     });
   };
-
 });
