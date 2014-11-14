@@ -43,7 +43,7 @@ angular
         templateUrl: 'views/adminViews/addProduct.html',
         controller: 'addProductCtrl'
       })
-      .when('/updateProduct/:barcode',{
+      .when('/updateProduct/:id',{
         templateUrl: 'views/adminViews/updateProduct.html',
         controller: 'updateProduct'
       })

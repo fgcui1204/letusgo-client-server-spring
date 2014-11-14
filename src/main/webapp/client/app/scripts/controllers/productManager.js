@@ -13,8 +13,8 @@ angular.module('letusgo')
       $location.path('/addProduct');
     };
 
-    $scope.toUpdate = function (barcode) {
-      $location.path('/updateProduct/' + barcode);
+    $scope.toUpdate = function (id) {
+      $location.path('/updateProduct/' + id);
     };
 
     function initProducts(){

@@ -6,8 +6,7 @@ angular.module('letusgo')
       $scope.categories = data;
     });
 
-    productService.getProductById($routeParams.barcode, function (data) {
-      var item = data;
+    productService.getProductById($routeParams.id, function (item) {
       $scope.productInfo = {'barcode': item.barcode, 'category': item.category, 'name': item.name, 'price': item.price, 'unit': item.unit};
     });
 

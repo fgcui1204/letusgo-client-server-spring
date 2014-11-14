@@ -70,9 +70,13 @@ angular.module('letusgo').service('productService', function ($http) {
     };
   };
 
-  this.getProductById = function (barcode, callback) {
-    this.product(function (data) {
-      var item = _.find(data, { 'barcode': barcode });
+  this.getProductById = function (id, callback) {
+    this.product(function (items) {
+
+      var item = _.find(items,function(product){
+        return product.id.toString() === id.toString();
+
+      });
       callback(item);
     });
 
