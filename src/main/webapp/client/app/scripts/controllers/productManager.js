@@ -2,10 +2,16 @@
 angular.module('letusgo')
   .controller('ProductManagerCtrl', function ($location,$scope, productService) {
 
+    function initProducts(){
+      productService.product(function (data) {
+        $scope.products = data;
+      });
+    }
+
     initProducts();
 
-    $scope.delete = function (barcode) {
-      productService.delete(barcode);
+    $scope.delete = function (id) {
+      productService.delete(id);
       initProducts();
     };
 
@@ -16,10 +22,4 @@ angular.module('letusgo')
     $scope.toUpdate = function (id) {
       $location.path('/updateProduct/' + id);
     };
-
-    function initProducts(){
-      productService.product(function (data) {
-        $scope.products = data;
-      });
-    }
   });
