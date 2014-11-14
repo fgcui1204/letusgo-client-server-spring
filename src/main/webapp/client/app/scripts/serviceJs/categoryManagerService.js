@@ -35,7 +35,7 @@ angular.module('letusgo').service('CategoryManagerService', function ($location,
   };
 
   this.add = function (category, callback) {
-    $http.post('/api/categories', {category: category})
+    $http.post('/api/categories', category)
       .success(function (data) {
         callback(data);
       });
