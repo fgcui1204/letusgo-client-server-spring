@@ -20,12 +20,11 @@ angular.module('letusgo').service('productService', function ($http) {
   };
 
   this.getTotalCount = function (callback) {
-    this.cartItem(function (data) {
-      var items = data;
+    this.cartItem(function (cartItems) {
       var totalCount = 0;
 
-      if (!_.isEmpty(items)) {
-        var counts = _.pluck(items,'count');
+      if (!_.isEmpty(cartItems)) {
+        var counts = _.pluck(cartItems,'count');
         totalCount = _.reduce(counts,function(totalCount,num){
            return totalCount + num;
         });
