@@ -14,10 +14,10 @@
         </div>
         <div ng-repeat="orderItem in orderItems">
             <div class="row text-center">
-                <div class="col-md-3">{{orderItem.name}}</div>
+                <div class="col-md-3">{{orderItem.item.name}}</div>
                 <div class="col-md-3">{{orderItem.count}}</div>
-                <div class="col-md-3">{{orderItem.price}}</div>
-                <div class="col-md-3">{{orderItem.price*orderItem.count}}</div>
+                <div class="col-md-3">{{orderItem.item.price}}</div>
+                <div class="col-md-3">{{orderItem.item.price*orderItem.count}}</div>
             </div>
         </div>
         <hr>
