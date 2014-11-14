@@ -97,7 +97,7 @@ angular.module('letusgo').service('productService', function ($http) {
   };
 
   this.doUpdate = function (product, callback) {
-    $http.put('/api/items/' + product.barcode, {item: product})
+    $http.put('/api/items/' + product.id,product )
       .success(function (data) {
         callback(data);
       });
