@@ -1,0 +1,99 @@
+<!doctype html>
+<html class="no-js" >
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css
+    <link rel="stylesheet" href="styles/main.css">
+    -->
+    <!-- endbuild -->
+  </head>
+  <body ng-app="letusgo" ng-controller="MainCtrl">
+    <!-- Add your site or application content here -->
+    <div class="container">
+      <div class="header">
+          <nav class="navbar navbar-default navbar-static-top" role="navigation">
+              <div class="container">
+                  <ul class="nav nav-pills" role="tablist">
+                      <li role="presentation"><a href = "#/homePage"><lable>Let us go!</lable></a></li>
+                      <li role="presentation"><a href="#/homePage">首页</a></li>
+                      <li role="presentation"><a href = "#/productList">商品</a></li>
+                      <li role="presentation"><a href = "#/productManager">商品管理</a></li>
+                     <li role="presentation"><a href = "#/CategoryManager">商品类别管理</a></li>
+                      <div class="text-right">
+                          <a href = "#/cart"><li role="presentation"><span class="glyphicon glyphicon-shopping-cart"></span>购物车({{totalCount}})</li></a>
+                      </div>
+                  </ul>
+              </div>
+          </nav>
+      </div>
+
+      <div ng-view=""></div>
+
+      <div class="footer text-center">
+        <p ><span>版权所有</span>@来此购网上商城</p>
+      </div>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <!--<script>-->
+       <!--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){-->
+       <!--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),-->
+       <!--m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)-->
+       <!--})(window,document,'script','//www.google-analytics.com/analytics.js','ga');-->
+
+       <!--ga('create', 'UA-XXXXX-X');-->
+       <!--ga('send', 'pageview');-->
+    <!--</script>-->
+
+    <!--[if lt IE 9]>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/json3/lib/json3.js"></script>
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="/bower_components/angular-resource/angular-resource.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="/bower_components/lodash/dist/lodash.js"></script>
+
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+
+        <script src="scripts/app.js"></script>
+
+        <script src="scripts/serviceJs/productService.js"></script>
+        <script src="scripts/serviceJs/cartService.js"></script>
+        <script src="scripts/serviceJs/categoryManagerService.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+
+
+        <script src="scripts/controllers/productManager.js"></script>
+        <script src="scripts/controllers/addProduct.js"></script>
+        <script src="scripts/controllers/updateProduct.js"></script>
+        <script src="scripts/controllers/categoryManager.js"></script>
+        <script src="scripts/controllers/updateCategory.js"></script>
+        <script src="scripts/controllers/product.js"></script>
+        <script src="scripts/controllers/cart.js"></script>
+        <script src="scripts/controllers/order.js"></script>
+
+
+</body>
+</html>

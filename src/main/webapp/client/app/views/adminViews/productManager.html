@@ -1,0 +1,39 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+      <div class="row text-center">
+        <div class="col-md-4 form-inline"><label class="h2">Search:</label>
+          <input ng-model="query">
+
+        </div>
+        <div class="col-md-6"><label class="h2">商品管理</label></div>
+        <div class="col-md-2"> <a class="btn btn-primary btn-lg" ng-click="toAdd()" role="button">添加商品</a></div>
+      </div>
+  </div>
+  <div class="panel-body" ng-controller="ProductManagerCtrl">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        <div class="row text-center">
+          <div class="col-md-1"><label class="h4">类别</label></div>
+          <div class="col-md-3"><label class="h4">名称</label></div>
+          <div class="col-md-3"><label class="h4">价格(元)</label></div>
+          <div class="col-md-2"><label class="h4">单位</label></div>
+          <div class="col-md-3"><label class="h4">操作</label></div>
+        </div>
+      </div>
+
+      <div class="panel-body" ng-repeat="product in products|filter:query">
+        <div class="row text-center">
+          <div class="col-md-1" id="p_name">{{product.category.name}}</div>
+          <div class="col-md-3" id="p_name">{{product.name}}</div>
+          <div class="col-md-3" id="p_price">{{product.price}}</div>
+          <div class="col-md-2" id="p_unit">{{product.unit}}</div>
+          <div class="col-md-3">
+            <a class="btn btn-primary btn-sm" ng-click="delete(product.barcode)" role="button">删除</a>
+            <a class="btn btn-primary btn-sm" ng-click="toUpdate(product.barcode)" role="button">修改</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

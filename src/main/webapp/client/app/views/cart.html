@@ -1,0 +1,37 @@
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <div class="row text-center">
+            <div class="col-md-1"><label class="h4">分类</label></div>
+            <div class="col-md-3"><label class="h4">名称</label></div>
+            <div class="col-md-3"><label class="h4">价格(元)</label></div>
+            <div class="col-md-3"><label class="h4">数量</label></div>
+            <div class="col-md-2"><label class="h4">小计(元)</label></div>
+        </div>
+    </div>
+
+    <div class="panel-body">
+        <div class="panel panel-default">
+            <div class="panel-body" ng-repeat="cartItem in cartItems">
+
+                <div class="row text-center">
+                    <div class="col-md-1">{{cartItem.category.name}}</div>
+                    <div class="col-md-3">{{cartItem.name}}</div>
+                    <div class="col-md-3">{{cartItem.price}}</div>
+                    <div class="col-md-3 form-inline num">
+                        <input type="number" min='0' ng-model="cartItem.count" ng-change="changeCount(cartItem)" value="{{cartItem.count}}">
+                    </div>
+                    <div class="col-md-2">
+                       {{cartItem.price*cartItem.count}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="text-right text-danger h4">
+            <label>总计：{{totalMoney}}元</label>
+        </p>
+        <p class="text-right">
+            <a class="btn btn-primary btn-lg" role="button" href = "#/order">结算</a>
+        </p>
+    </div>
+</div>

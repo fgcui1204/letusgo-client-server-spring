@@ -1,0 +1,25 @@
+
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">
+        <div class="row text-center">
+            <div class="col-md-1"><label class="h4">类别</label></div>
+            <div class="col-md-3"><label class="h4">名称</label></div>
+            <div class="col-md-3"><label class="h4">价格(元)</label></div>
+            <div class="col-md-2"><label class="h4">单位</label></div>
+            <div class="col-md-3"><label class="h4">购买</label></div>
+        </div>
+    </div>
+
+    <div class="panel-body"  id="add" ng-repeat="product in products">
+        <div class="row text-center" >
+            <div class="col-md-1" id="p_name">{{product.category.name}}</div>
+            <div class="col-md-3" id="p_name">{{product.name}}</div>
+            <div class="col-md-3" id="p_price">{{product.price}}</div>
+            <div class="col-md-2" id="p_unit">{{product.unit}}</div>
+            <div class="col-md-3">
+                <a class="btn btn-primary btn-sm" ng-click="addToCart(product)"  role="button">购买</a>
+            </div>
+        </div>
+    </div>
+</div>

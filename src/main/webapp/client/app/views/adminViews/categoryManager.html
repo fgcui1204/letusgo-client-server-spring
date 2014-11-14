@@ -1,0 +1,32 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="row text-center">
+      <div class="col-md-10"><label class="h2">商品类别管理</label></div>
+      <div class="col-md-2"> <a class="btn btn-primary btn-lg" href="#/addCategory" role="button">添加分类</a></div>
+    </div>
+  </div>
+  <div class="panel-body" ng-controller="CategoryManagerCtrl">
+    <div class="panel panel-default">
+      <!-- Default panel contents -->
+      <div class="panel-heading">
+        <div class="row text-center">
+          <div class="col-md-4"><label class="h4">类别编号</label></div>
+          <div class="col-md-4"><label class="h4">类别名称</label></div>
+          <div class="col-md-4"><label class="h4">操作</label></div>
+        </div>
+      </div>
+
+      <div class="panel-body" ng-repeat="category in categories">
+        <div class="row text-center">
+          <div class="col-md-4" id="p_name">{{category.id}}</div>
+          <div class="col-md-4" id="p_name">{{category.name}}</div>
+          <div class="col-md-4">
+            <a class="btn btn-primary btn-sm" ng-click="delete(category.id)" role="button">删除</a>
+            <a class="btn btn-primary btn-sm" ng-click="toUpdate(category)" role="button">修改</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
