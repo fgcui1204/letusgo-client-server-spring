@@ -3,14 +3,13 @@ angular.module('letusgo').service('cartService', function ( productService, $htt
 
 
   this.getTotalMoney = function (callback) {
-    productService.cartItem(function (data) {
+    productService.cartItem(function (cartItems) {
 
-      var cartItem = data;
       var totalMoney = 0;
 
-      if (cartItem !== null) {
-        _.forEach(cartItem, function (item) {
-          totalMoney += item.price * item.count;
+      if (cartItems !== null) {
+        _.forEach(cartItems, function (cartItem) {
+          totalMoney += cartItem.item.price * cartItem.count;
         });
       }
       callback(totalMoney);
