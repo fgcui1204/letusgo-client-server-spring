@@ -35,7 +35,7 @@ angular.module('letusgo').service('productService', function ($http) {
 
   };
 
-  this.addToCart = function (product) {
+  this.addToCart = function (product,callback) {
     this.cartItem(function (cartItems) {
 
       var result = _.find(cartItems, function (cartItem) {
@@ -44,12 +44,16 @@ angular.module('letusgo').service('productService', function ($http) {
 
       if (result) {
         result.count = result.count + 1;
-        $http.put('/api/cartItems/' + result.id, result);
+        $http.put('/api/cartItems/' + result.id, result).success(function (data) {
+          callback(data);
+        });
       } else {
 
         var cartItem = {item: product};
         cartItem.count = 1;
-        $http.post('/api/cartItems', cartItem);
+        $http.post('/api/cartItems', cartItem).success(function (data) {
+          callback(data);
+        });
       }
     });
   };
@@ -106,7 +110,7 @@ angular.module('letusgo').service('productService', function ($http) {
   };
 
   this.addProduct = function (product, callback) {
-    $http.post('/api/items', {item: product})
+    $http.post('/api/items', product)
       .success(function (data) {
         callback(data);
       });
