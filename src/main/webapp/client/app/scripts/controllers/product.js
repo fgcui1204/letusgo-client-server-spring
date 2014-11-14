@@ -1,9 +1,9 @@
 'use strict';
 angular.module('letusgo')
-  .controller('ProCtrl', function ($scope, productService) {
+  .controller('ProCtrl', function ($scope, cartService) {
 
     function initTotalCount(){
-      productService.getTotalCount(function (data) {
+      cartService.getTotalCount(function (data) {
         $scope.$parent.totalCount = data;
       });
     }
@@ -15,7 +15,7 @@ angular.module('letusgo')
     initTotalCount();
 
     $scope.addToCart = function (product) {
-      productService.addToCart(product, function () {
+      cartService.addToCart(product, function () {
         initTotalCount();
       });
     };
