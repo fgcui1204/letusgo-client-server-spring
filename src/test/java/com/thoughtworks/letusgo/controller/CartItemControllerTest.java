@@ -136,7 +136,7 @@ public class CartItemControllerTest {
 
     @Test
     public void should_delete_all_cartItem() throws Exception {
-        mockMvc.perform(delete("/api/cartItems"))
+        mockMvc.perform(delete("/api/payment"))
                 .andExpect(status().is(204));
         verify(cartItemService, times(1)).deleteCartItem();
     }
