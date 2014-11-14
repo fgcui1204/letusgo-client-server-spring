@@ -35,26 +35,26 @@ angular.module('letusgo').service('productService', function ($http) {
 
   };
 
-  this.addToCart = function (productItem, callback) {
-    this.cartItem(function (data) {
-      var cartData = data;
-      var cartItem = _.find(cartData, {'barcode': productItem.barcode});
+  this.addToCart = function (product) {
+    this.cartItem(function (cartItems) {
 
-      if (cartItem) {
-        cartItem.count = cartItem.count+1;
-      } else {
-        productItem.count = 1;
-        cartData.push(productItem);
-      }
-
-      $http.post('/api/cartItems', {cartItems: cartData}).success(function () {
-        callback();
+      var result = _.find(cartItems,function(cartItem){
+        return cartItem.item.id === product.id;
       });
+
+      if (result) {
+        result.count = result.count+1;
+        $http.put('/api/cartItems/'+result.id,result);
+      } else {
+        var cartItem = {item : product};
+        cartItem.count = 1;
+        $http.post('/api/cartItems', cartItem);
+      }
     });
   };
 
-  this.delete = function (barcode) {
-    $http.delete('/api/items/' + barcode);
+  this.delete = function (id) {
+    $http.delete('/api/items/' + id);
   };
 
 
