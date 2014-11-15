@@ -2,7 +2,7 @@ package com.thoughtworks.letusgo.model;
 
 public class CartItem {
     private int id;
-    private com.thoughtworks.letusgo.model.Item item;
+    private Item item;
     private int count;
 
     public CartItem() {
